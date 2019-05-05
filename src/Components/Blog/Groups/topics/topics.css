@@ -1,0 +1,21 @@
+.main {
+  word-wrap: break-word;
+  background: lightblue;
+}
+
+.head {
+  border: solid black 3px;
+  font-size: 25px;
+  background: yellow;
+}
+
+#whole-post {
+  border: solid black 3px;
+}
+
+.post-title {
+  background: lightblue;
+  color: white;
+  font-size: 20px;
+  border-bottom: dashed black 2px;
+}
