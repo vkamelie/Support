@@ -41,7 +41,6 @@ module.exports = {
   login: async (req, res) => {
     const { username, password } = req.body;
     const db = req.app.get("db");
-    console.log(password);
 
     let userFound = await db.check_user_exists(username);
     // .catch((err) => console.log('error caught'));
@@ -52,7 +51,7 @@ module.exports = {
     let result = await bcrypt.compare(password, userFound[0].password);
     if (result) {
       console.log("sign in working");
-      console.log(userFound[0]);
+      // console.log(userFound[0]);
       req.session.user = {
         id: userFound[0].user_id,
         username: userFound[0].username,

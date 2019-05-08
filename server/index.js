@@ -10,6 +10,7 @@ const bC = require("./controllers/blogController");
 const massive = require("massive");
 const session = require("express-session");
 const uC = require("./controllers/userController");
+const cC = require("./controllers/commentController");
 
 require("dotenv").config();
 
@@ -26,6 +27,7 @@ massive(CONNECTION_STRING).then(db => {
 
 app.use(
   session({
+    key: "username",
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
@@ -51,6 +53,11 @@ io.on("connection", function(socket) {
 
 app.post("/api/blogs", bC.postBlog);
 app.get("/api/blogs", bC.getAllBlogs);
+app.delete("/api/blogs/:post_id", bC.deletePost);
+app.put("/api/blogs/:post_id/:post_text", bC.updatePost);
+
+app.post("/api/comments", cC.addComment);
+app.get("/api/comments", cC.getComments);
 
 app.post("/api/login", uC.login);
 
@@ -58,11 +65,6 @@ app.post("/api/login", uC.login);
 //   res.session.destory();
 //   res.sendStatus(200);
 // });
-
-// app.get("/api/care", bC.getCare);
-// app.get("/api/liver", bC.getLiver);
-// app.get("/api/heart", bC.getHeart);
-// app.get("api/blogs", bC.getAllBlogs);
 
 app.get("/api/user", (req, res) => {
   res.status(200).send(req.session.user);

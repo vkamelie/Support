@@ -1,21 +1,28 @@
-.main {
+.main_post {
   word-wrap: break-word;
-  background: lightblue;
-}
-
-.head {
-  border: solid black 3px;
-  font-size: 25px;
-  background: yellow;
-}
-
-#whole-post {
-  border: solid black 3px;
-}
-
-.post-title {
-  background: lightblue;
-  color: white;
+  background: rgba(227, 240, 243, 0.5);
   font-size: 20px;
-  border-bottom: dashed black 2px;
+  font-family: sans-serif;
+  border-bottom: solid grey 3px;
+}
+
+.post_header {
+  border-bottom: solid rgb(88, 86, 86) 2px;
+  font-size: 30px;
+  background: rgb(200, 225, 231);
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.title {
+  font-size: 25px;
+  text-transform: uppercase;
+  text-decoration: underline rgb(88, 86, 86);
+  margin-left: 5px;
+}
+
+.text {
+  margin-left: 15px;
 }

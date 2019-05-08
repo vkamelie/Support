@@ -3,8 +3,13 @@ import "./Res.css";
 
 export default function Resources() {
   return (
-    <div className="rec">
-      <header>Resources</header>
+    <div className="r-image">
+      <div class="hero-image">
+        <div class="hero-text">
+          <h1>Resources</h1>
+          <h3>It's Okay to Reach Out.</h3>
+        </div>
+      </div>
       <ul>
         <li>
           <a href={"https://transplantliving.org/community/support-groups/"}>
@@ -17,9 +22,8 @@ export default function Resources() {
           <a href={"http://suicidepreventionlifeline.org/"}>
             National Suicide Prevention Lifeline
           </a>
-          <br />
-          1-800-273-8255
         </li>
+        <li>1-800-273-8255</li>
       </ul>
     </div>
   );

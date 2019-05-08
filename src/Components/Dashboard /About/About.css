@@ -1,0 +1,21 @@
+.about-image {
+  background-image: url("./Photo.jpg");
+  background-color: #cccccc;
+  height: 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  opacity: 0.6;
+}
+
+.about-text {
+  text-align: center;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  font-size: 25px;
+  transform: translate(-50%, -50%);
+  color: white;
+  background: rgba(133, 130, 130, 0.205);
+}

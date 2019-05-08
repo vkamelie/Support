@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { setUser } from "../../redux/userReducer";
+import "./Login.css";
 
 class Login extends Component {
   constructor(props) {
@@ -38,7 +40,7 @@ class Login extends Component {
   render() {
     console.log(this.props.user.user);
     return (
-      <div>
+      <div className="main-login">
         <div>
           <form>
             <input
@@ -48,13 +50,15 @@ class Login extends Component {
             />
 
             <input
-              type="text"
+              type="password"
               placeholder="password"
               onChange={e => this.setState({ password: e.target.value })}
             />
-            <button type="button" onClick={() => this.login()}>
-              Login!
-            </button>
+            <Link to="/">
+              <button type="button" onClick={() => this.login()}>
+                Login!
+              </button>
+            </Link>
           </form>
         </div>
       </div>

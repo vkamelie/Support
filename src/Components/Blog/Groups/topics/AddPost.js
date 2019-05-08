@@ -2,7 +2,9 @@ import React, { Component } from "react";
 // import { connect } from "react-redux";
 // import { setUser } from "../../../redux/userReducer";
 import "./AddPost.css";
-import axios from "axios";
+import { connect } from "react-redux";
+import { setBlog } from "../../../../redux/blogReducer";
+//import axios from "axios";
 
 class AddPost extends Component {
   constructor(props) {
@@ -14,21 +16,6 @@ class AddPost extends Component {
       cat: "Heart"
     };
   }
-
-  addBlog = () => {
-    const { author, title, content, cat } = this.state;
-    const payload = {
-      author,
-      title,
-      content,
-      cat
-    };
-    axios.post("/api/blogs", payload);
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-  };
 
   addTitle = v => {
     this.setState({ title: v });
@@ -42,17 +29,58 @@ class AddPost extends Component {
     this.setState({ cat: v });
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+    const { title, content, cat } = this.state;
+    console.log(title, content, cat, "this one rn");
+    this.props.addBlog(title, content, cat);
+  };
+
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   const { author, title, content, cat } = this.state;
+  //   console.log(
+  //     "author:",
+  //     author,
+  //     "title:",
+  //     title,
+  //     "content:",
+  //     content,
+  //     "cat:",
+  //     cat
+  //   );
+  //   axios.post("/api/blogs", author, title, content, cat).then(res => {
+  //     this.props.setBlog(res.data);
+  //     console.log("post added");
+  //   });
+  // };
+
+  // addBlog = (author, title, content, cat) => {
+  //   let obj = {
+  //     author,
+  //     title,
+  //     content,
+  //     cat
+  //   };
+  //   axios
+  //     .post("/api/blogs", obj)
+  //     .then(res => {
+  //       this.props.setBlog({ blogs: res.data });
+  //     })
+  //     .catch(function(error) {
+  //       console.log(error);
+  //     });
+  // };
   render() {
     console.log(this.state);
     return (
-      <div className="post_div">
-        <form onSubmit={e => e.preventDefault()}>
+      <div className="add_post">
+        <form onSubmit={this.handleSubmit}>
           <div>
             <input
               type="text"
               name="title"
-              id="title"
-              placeholder="title"
+              placeholder="Add a Topic"
               onChange={e => this.setState({ title: e.target.value })}
             />
           </div>
@@ -64,6 +92,7 @@ class AddPost extends Component {
             />
           </div>
           <label>Pick a Catogory</label>
+
           <select
             name="cat"
             id="cat"
@@ -74,13 +103,25 @@ class AddPost extends Component {
             <option value="Care Giver">Care Giver</option>
           </select>
 
-          <button type="submit" onClick={this.addBlog}>
-            Add Post
-          </button>
+          <button type="submit">Add Post</button>
         </form>
       </div>
     );
   }
 }
 
-export default AddPost;
+const mapStateToProps = state => {
+  return {
+    blogs: state.blogs,
+    user: state.user
+  };
+};
+
+const mapDispatchToProps = {
+  setBlog: setBlog
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddPost);

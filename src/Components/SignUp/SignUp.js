@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { setUser } from "../../redux/userReducer";
+import "./SignUp.css";
+import { Link } from "react-router-dom";
 
 class SignUp extends Component {
   constructor(props) {
@@ -31,8 +33,8 @@ class SignUp extends Component {
     const { username, password, name } = this.state;
     console.log(username, password, name);
     return (
-      <div className="main-form">
-        <div>
+      <div className="main-signup">
+        <div className="SignUp">
           <form>
             <h1>Join Our Community!</h1>
             <input
@@ -44,7 +46,7 @@ class SignUp extends Component {
             />
 
             <input
-              type="text"
+              type="password"
               placeholder="Password"
               onChange={e => this.setState({ password: e.target.value })}
             />
@@ -55,9 +57,11 @@ class SignUp extends Component {
               onChange={e => this.setState({ name: e.target.value })}
             />
 
-            <button type="button" onClick={() => this.signUp()}>
-              Sign Up
-            </button>
+            <Link to="/login">
+              <button type="button" onClick={() => this.signUp()}>
+                Sign Up
+              </button>
+            </Link>
           </form>
         </div>
       </div>

@@ -1,6 +1,37 @@
-.rec {
-  background: yellow;
-  height: 100px;
-  width: 200px;
-  border: black solid;
+.r-image {
+  background-image: url("./support_photo.png");
+  background-color: #cccccc;
+  height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  opacity: 0.8;
+}
+
+.r-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: sans-serif;
+}
+
+.r-image ul {
+  display: flex;
+  flex-direction: column;
+  font-size: 45px;
+  color: rgb(44, 147, 179);
+  align-items: center;
+}
+.r-image a {
+  color: rgb(44, 147, 179);
+}
+
+@media screen and (max-width: 700px) {
+  .r-image ul {
+    font-size: 20px;
+  }
 }

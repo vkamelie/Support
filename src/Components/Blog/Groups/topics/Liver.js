@@ -1,24 +1,59 @@
-import React from "react";
+import React, { Component } from "react";
 import "./topics.css";
+import axios from "axios";
 
-const Liver = props => {
-  const { allBlogs } = props;
-  const blogsList = allBlogs.map(blog => {
-    return blog.category === "Liver" ? (
-      <div key={blog.post_id}>
-        <div>{blog.author}</div>
-        <div>{blog.post_title}</div>
-        <div>{blog.post_text}</div>
+//import AddComments from "../topics/AddComments";
+
+//import { getAllComments } from "../../../../redux/commentReducer";
+
+class Liver extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: null
+    };
+  }
+
+  postDelete = id => {
+    axios.delete(`/api/blogs/${id}`).then(() => {
+      this.props.getAll();
+    });
+  };
+
+  render() {
+    const { allBlogs } = this.props;
+
+    let liverBlogs = allBlogs
+      .filter(blog => blog.category === "Liver")
+      .map(e => {
+        return (
+          <div key={e.post_id} className="main_post">
+            <div className="title"> Topic: {e.post_title}</div>
+            <br />
+            <div className="text">{e.post_text}</div>
+            <br />
+            <div> Posted By : {e.author}</div>
+            <div>
+              <button
+                onClick={() => {
+                  this.postDelete(e.post_id);
+                }}
+              >
+                Delete
+              </button>
+              <div />
+            </div>
+          </div>
+        );
+      });
+
+    return (
+      <div className="main_post">
+        <div className="post_header">Liver Support </div>
+
+        {liverBlogs}
       </div>
-    ) : null;
-  });
-
-  return (
-    <div className="main">
-      <div className="head">Care Giver Support </div>
-      {blogsList}
-    </div>
-  );
-};
-
+    );
+  }
+}
 export default Liver;

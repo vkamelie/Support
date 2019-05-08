@@ -1,70 +1,32 @@
-.post_div {
-  height: 300px;
+.add_post form {
+  background: rgba(206, 236, 243, 0.719);
+  height: 30%;
 }
 
-details summary {
-  cursor: pointer;
-  outline: none !important;
-  display: inline-block;
-  padding: 8px 12px;
-  padding-top: 10px;
-  border-radius: 4px;
-  overflow: hidden;
-  background: lightgreen;
-  color: white;
-  font-family: Arial;
-  font-weight: bold;
-  font-size: 1em;
-  letter-spacing: 0.025em;
+.add_post input {
+  font-size: 25px;
+  width: 99%;
+  background: rgba(206, 236, 243, 0.719);
+}
+.add_post textarea {
+  font-size: 20px;
+  width: 99%;
+  height: 10vh;
+  background: rgba(206, 236, 243, 0.719);
+}
+.add_post label {
+  color: black;
+  font-size: 20px;
   text-transform: uppercase;
+  letter-spacing: 3px;
+  border-bottom: solid grey 2px;
 }
 
-details[open] > summary::before {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: block;
-  cursor: default;
-  content: " ";
-  z-index: 99;
-  background: rgba(27, 31, 35, 0.5);
+.add_post select {
+  font-size: 20px;
 }
 
-details > div {
-  left: 50%;
-  margin: 10vh auto;
-  max-height: 80vh;
-  max-width: 90vw;
-  position: fixed;
-  top: 0;
-  transform: translateX(-50%);
-  width: 448px;
-  z-index: 999;
-  animation-name: fadein;
-  animation-duration: 300ms;
-  animation-timing-function: ease-in-out;
-  background-color: #fff;
-  border: 1px solid #d1d5da;
-  border-radius: 3px;
-  font-size: 2em;
+.add_post button {
+  padding: 9px;
   font-weight: bold;
-  font-family: Arial;
-  padding: 1em;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-  border-top: 4px solid red;
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-details summary::-webkit-details-marker {
-  display: none;
 }
